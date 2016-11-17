@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private UIHandler uiHandler;
@@ -25,6 +27,17 @@ public class MainActivity extends AppCompatActivity {
         MyThread mt1 = new MyThread();
         mt1.start();
     }
+    public void test2(View v){
+    }
+    
+    private class MyTask extends TimerTask {
+        int i;
+        @Override
+        public void run() {
+            Log.i("brad", "i = " +i++);
+        }
+    }
+
     private class MyThread extends Thread {
         @Override
         public void run() {
