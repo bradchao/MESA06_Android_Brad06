@@ -8,17 +8,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private UIHandler uiHandler;
+    private Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        timer = new Timer();
         uiHandler = new UIHandler();
         tv = (TextView)findViewById(R.id.tv);
     }
@@ -28,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
         mt1.start();
     }
     public void test2(View v){
+        timer.schedule(new MyTask(), 1000, 1000);
     }
-    
+
     private class MyTask extends TimerTask {
         int i;
         @Override
